@@ -12,14 +12,14 @@ INSERT INTO organization (name, description) VALUES ('Quatro Inmobiliaria', 'Des
 INSERT INTO organization (name, description) VALUES ('Imagina', 'Description for Imagina');
 
 -- Insert records into tenant
-INSERT INTO tenant (name, org_id) VALUES ('Way 3980', 1);
-INSERT INTO tenant (name, org_id) VALUES ('Tenant 2', 2);
+INSERT INTO tenant (id,name, org_id) VALUES (1,'Way 3980', 1);
+INSERT INTO tenant (id,name, org_id) VALUES (2,'Tenant 2', 2);
 
 -- Insert records into user
-INSERT INTO user (name, last_name, username, password, document_type, document, user_type) 
-VALUES ('Cesar', 'Estrada', 'cesarestrada090@gmail.com', 'password123', 1, 'A12345678', 1);
-INSERT INTO user (name, last_name, username, password, document_type, document, user_type) 
-VALUES ('Melissa', 'Vasquez', 'mevv@gmail.com', 'password456', 2, 'B98765432', 2);
+INSERT INTO user (tenant_id, name, last_name, username, password, document_type, document, user_type) 
+VALUES (1,'Cesar', 'Estrada', 'cesarestrada090@gmail.com', 'password123', 1, 'A12345678', 1);
+INSERT INTO user (tenant_id, name, last_name, username, password, document_type, document, user_type) 
+VALUES (2, 'Melissa', 'Vasquez', 'mevv@gmail.com', 'password456', 2, 'B98765432', 2);
 
 INSERT INTO user_tenant (user_id, tenant_id, status)
 VALUES 

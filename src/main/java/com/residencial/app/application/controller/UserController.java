@@ -59,6 +59,17 @@ public class UserController {
         }
     }
 
+    @GetMapping("/{tenantId}")
+    public ResponseEntity<UserDTO> getUsersByTenantId(@PathVariable Integer tenantId) {
+        try {
+            UserDTO userDTO = userService.getUserById(tenantId);
+            return ResponseEntity.ok(userDTO);
+        } catch (Exception e) {
+            log.info("Exception in: " + e.getMessage());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
         try {

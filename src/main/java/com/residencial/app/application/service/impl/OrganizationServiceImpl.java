@@ -8,6 +8,7 @@ import com.residencial.app.application.service.OrganizationService;
 import com.residencial.app.domain.entities.Organization;
 import com.residencial.app.domain.repository.OrganizationRepository;
 import com.residencial.app.infrastructure.pagination.PaginationUtil;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,12 +18,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class OrganizationServiceImpl implements OrganizationService {
-
-    @Autowired
+    
     private OrganizationRepository organizationRepository;
-
-    @Autowired
+    
     private OrganizationMapper organizationMapper;
 
     @Override
