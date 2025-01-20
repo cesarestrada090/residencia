@@ -91,4 +91,19 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody UserDTO userDTO) {
+        try {
+            boolean isAuthenticated = userService.authenticate(userDTO);
+            if (isAuthenticated) {
+                return ResponseEntity.ok("Login successful");
+            } else {
+                return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
+            }
+        } catch (Exception e) {
+            log.info("Exception in: " + e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

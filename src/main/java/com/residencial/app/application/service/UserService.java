@@ -13,4 +13,5 @@ public interface UserService {
     UserDTO createUser(UserDTO userDTO);
     UserDTO updateUser(Integer id, UserDTO userDTO);
     void deleteUser(Integer id);
+    boolean authenticate(UserDTO userDTO);
 }

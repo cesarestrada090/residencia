@@ -53,4 +53,9 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
     }
+    @Override
+    public boolean authenticate(UserDTO userDTO) {
+        User user = userRepository.findByUsername(userDTO.getUsername());
+        return user != null && user.getPassword().equals(userDTO.getPassword());
+    }
 }
