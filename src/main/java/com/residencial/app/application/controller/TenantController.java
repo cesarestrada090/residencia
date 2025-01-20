@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/tenants")
+@RequestMapping("/tenant")
 public class TenantController {
 
     @Autowired

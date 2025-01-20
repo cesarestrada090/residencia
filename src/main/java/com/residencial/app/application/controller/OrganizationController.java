@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/organizations")
+@RequestMapping("/organization")
 @AllArgsConstructor
 @Slf4j
 public class OrganizationController {

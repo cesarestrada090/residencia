@@ -68,3 +68,26 @@ CREATE TABLE user_tenant (
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
     FOREIGN KEY (tenant_id) REFERENCES tenant(id) ON DELETE CASCADE
 );
+
+CREATE TABLE slot_type (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    status TINYINT DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE slot (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tenant_id INT NOT NULL,
+    slot_type INT NOT NULL,
+    name VARCHAR(100) NOT NULL COMMENT 'Name or description of the slot',
+    start_time DATETIME NOT NULL COMMENT 'Start time of the slot',
+    end_time DATETIME NOT NULL COMMENT 'End time of the slot',
+    status TINYINT DEFAULT 1 NOT NULL COMMENT '1 = Active, 0 = Inactive',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Creation timestamp',
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last update timestamp',
+    CONSTRAINT fk_tenant FOREIGN KEY (tenant_id) REFERENCES tenant(id) ON DELETE CASCADE,
+    FOREIGN KEY (slot_type) REFERENCES slot_type(id)
+);
